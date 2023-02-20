@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ base model """
-import datetime as dt
+from datetime import datetime
 import uuid
 
 
