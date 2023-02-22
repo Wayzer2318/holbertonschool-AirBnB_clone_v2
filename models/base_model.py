@@ -5,7 +5,7 @@ import uuid
 
 
 class BaseModel:
-    """ base model """
+    """ base model class """
 
     def __init__(self, *args, **kwargs):
         if kwargs:
