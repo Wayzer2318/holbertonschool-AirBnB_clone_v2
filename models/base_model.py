@@ -9,7 +9,7 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         if kwargs:
-            kwargs["created_at"] = datetime.strptime(kwargs["created_at"],
+            kwargs["created_at"] = datetime.strptime(kwargs['created_at'],
                                                      "%Y-%m-%dT%H:%M:%S.%f")
 
             kwargs["created_at"] = datetime.strptime(kwargs["created_at"],
