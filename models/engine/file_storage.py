@@ -1,40 +1,55 @@
 #!/usr/bin/python3
 """ engine storage """
-from models.base_model import BaseModel
 import json
 
 
-class FileStorage:
-    """ file storage """
+from models.base_model import BaseModel
 
-    __file_path = "file.json"
+
+class FileStorage():
+    """ file storage class """
+
+    __file_path = 'file.json'
     __objects = {}
 
     def all(self):
         return self.__objects
 
     def new(self, obj):
-        self.__objects[type(obj).__name__ + "." + obj.id] = obj
+        """ register new object """
+
+        k = ''
+
+        k += obj.__class__.__name__
+        k += '.'
+        k += k.id
+
+        FileStorage.__objects[k] = obj
 
     def save(self):
-        """ saves filestorage to json file """
-        ndict = {}
-
-        for key, value in FileStorage.__objects.items():
-            ndict[key] = value.to_dict()
+        """ save all objects to fs """
         
-        with open(FileStorage.__file_path, "w") as f:
-            json.dump(ndict, f)
+        data = {
+            k: v.to_dict()
+            for k, v in FileStorage.__objects.items()
+        }
+
+        p = FileStorage.__file_path
+        with open(p, 'w', encoding='utf-8') as file:
+            json.dump(data, file)
 
     def reload(self):
-        """ deserializes the json file """
+        """ reload all objects from fs """
+
+        p = FileStorage.__file_path
         try:
-            with open(FileStorage.__file_path, "r",
-                      encoding='utf-8') as read_file:
-                type(self).__objects = json.load(read_file)
-            for key, value in type(self).__objects.items():
-                obj = eval(type(self).__objects[key]['__class__'])(**value)
-                type(self).__objects[key] = obj
+            with open(p, 'r', encoding='utf-8') as file:
+                data = json.load(file)
 
         except FileNotFoundError:
-            pass
+            return
+
+        FileStorage.__objects = {
+            k: BaseModel(**v)
+            for k, v in data.items()
+        }
