@@ -31,4 +31,14 @@ class TestFileStorage(unittest.TestCase):
         self.my_storage.save()
         self.assertTrue(os.path.exists("file.json"))
 
+    def test_content_type(self):
+        """ test content type """
+        self.my_storage.save()
+        self.my_storage.new(self.my_model)
+
+        with open("file.json", encoding='utf-8') as f:
+            content = json.load(f)
+
+        self.assertIsInstance(content, dict)
+
 
