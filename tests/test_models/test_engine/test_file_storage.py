@@ -15,6 +15,13 @@ class TestFileStorage(unittest.TestCase):
         self.my_model = BaseModel()
         self.my_storage = FileStorage()
 
+    def tearDown(self):
+        """ tear down method """
+        if os.path.exists("file.json"):
+            os.remove("file.json")
+        else:
+            pass
+
     def test_new(self):
         """ test new """
         self.my_storage.new(self.my_model)
@@ -40,5 +47,3 @@ class TestFileStorage(unittest.TestCase):
             content = json.load(f)
 
         self.assertIsInstance(content, dict)
-
-
