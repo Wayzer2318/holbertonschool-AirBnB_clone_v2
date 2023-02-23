@@ -27,7 +27,7 @@ class BaseModel:
                                      self.id, self.__dict__)
 
     def save(self):
-        self.updated_at = datetime.now()
+        self.updated_at = datetime.datetime.now()
 
     def to_dict(self):
         new_dict = dict(self.__dict__)
