@@ -48,3 +48,20 @@ for models/user.py, unit tests must be in: tests/test_models/test_user.py
  * All your classes should have a documentation (python3 -c 'print(__import__("my_module").MyClass.__doc__)')
  * All your functions (inside and outside a class) should have a documentation (python3 -c 'print(__import__("my_module").my_function.__doc__)' and python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)')
 
+
+
+---
+File|Task
+---|---
+AUTHORS | the authors page
+README.md | read me file
+tests | unit tests
+base_model.py | a parent class that takes care of the initialization, serialization and deserialization of your future instances
+file_storage.py | an abstract storage engine
+console.py | a program that handles a command interpreter
+user.py | a class User that inherits from BaseModel
+state.py | a class State that inherits from BaseModel
+city.py | a class City that inherits from BaseMode
+amenity.py | a class Amenity that inherits from BaseMode
+place.py | a class Place that inherits from BaseMode
+review.py | a class Review that inherits from BaseMode
