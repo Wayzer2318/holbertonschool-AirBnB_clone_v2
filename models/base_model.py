@@ -4,7 +4,7 @@ import uuid
 import datetime
 
 
-from models import storage
+import models
 
 
 class BaseModel:
@@ -27,7 +27,7 @@ class BaseModel:
             self.created_at = datetime.datetime.now()
             self.updated_at = datetime.datetime.now()
 
-            storage.new(self)
+            models.storage.new(self)
 
     def __str__(self):
         r = [
@@ -41,7 +41,7 @@ class BaseModel:
     def save(self):
         self.updated_at = datetime.datetime.now()
 
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         new_dict = dict(self.__dict__)
