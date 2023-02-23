@@ -22,6 +22,11 @@ class TestFileStorage(unittest.TestCase):
         else:
             pass
 
+    def test_instance(self):
+        """ test for storage class instance creation """
+        storage = FileStorage()
+        self.assertIsInstance(storage, FileStorage)
+
     def test_new(self):
         """ test new """
         self.my_storage.new(self.my_model)
@@ -37,6 +42,15 @@ class TestFileStorage(unittest.TestCase):
         """ test save """
         self.my_storage.save()
         self.assertTrue(os.path.exists("file.json"))
+
+    def test_reload(self):
+        """ test for file storage reloading """
+        self.my_storage.save()
+        s = FileStorage()
+        s.reload()
+        kx = s.__objects.keys()
+        ky = self.my_storage.__objects.keys()
+        self.assertTrue(kx, ky)
 
     def test_content_type(self):
         """ test content type """
