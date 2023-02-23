@@ -22,7 +22,7 @@ class FileStorage():
 
         k += obj.__class__.__name__
         k += '.'
-        k += k.id
+        k += obj.id
 
         FileStorage.__objects[k] = obj
 
