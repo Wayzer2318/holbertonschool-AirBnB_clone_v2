@@ -17,14 +17,17 @@ class FileStorage:
         self.__objects[type(obj).__name__ + "." + obj.id] = obj
 
     def save(self):
+        """ saves filestorage to json file """
         ndict = {}
+
         for key, value in FileStorage.__objects.items():
             ndict[key] = value.to_dict()
+        
         with open(FileStorage.__file_path, "w") as f:
-            json.dumps(ndict, f)
+            json.dump(ndict, f)
 
     def reload(self):
-        """Deserializes the JSON file to __objects"""
+        """ deserializes the json file """
         try:
             with open(FileStorage.__file_path, "r",
                       encoding='utf-8') as read_file:
