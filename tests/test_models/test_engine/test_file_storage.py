@@ -1,8 +1,10 @@
 #!/usr/bin/python3
-
+""" tests for file storage """
 import unittest
 import os
 import json
+
+
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 
@@ -10,12 +12,12 @@ from models.engine.file_storage import FileStorage
 class TestFileStorage(unittest.TestCase):
     """ test for file storage """
 
-    def setUp(self):
+    def setup(self):
         """ set up """
         self.my_model = BaseModel()
         self.my_storage = FileStorage()
 
-    def tearDown(self):
+    def tear_down(self):
         """ tear down method """
         if os.path.exists("file.json"):
             os.remove("file.json")
