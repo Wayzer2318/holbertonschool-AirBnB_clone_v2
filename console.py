@@ -6,6 +6,7 @@ from models.user import User
 from models.base_model import BaseModel
 import sys
 
+
 class HBNBCommand(cmd.Cmd):
     """ HBNB command class """
     prompt = '(hbnb) '
@@ -36,6 +37,23 @@ class HBNBCommand(cmd.Cmd):
             key_value = strings[0] + '.' + strings[1]
             try:
                 print(models.storage.all()[key_value])
+            except KeyError:
+                print("** no instance found **")
+
+    def do_destroy(self, args):
+        """ delete an instance """
+        strings = args.split()
+        if len(strings) == 0:
+            print("** class name missing **")
+        elif strings[0] not in HBNBCommand.class_dict.keys():
+            print("** class doesn't exist **")
+        elif len(strings) == 1:
+            print("** instance id missing **")
+        else:
+            key_value = strings[0] + '.' + strings[1]
+            try:
+                del models.storage.all()[key_value]
+                models.storage.save()
             except KeyError:
                 print("** no instance found **")
 
