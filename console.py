@@ -40,6 +40,27 @@ class HBNBCommand(cmd.Cmd):
             except KeyError:
                 print("** no instance found **")
 
+    def do_all(self, args):
+        """ print string of all instance or just a class """
+        strings = args.split()
+        new_list = []
+        address_value = 0
+        if len(strings) == 1:
+            if strings[0] not in HBNBCommand.class_dict.keys():
+                print("** class doesn't exist **")
+            else:
+                for key in models.storage.all().keys():
+                    class_name = key.split('.')
+                    if class_name[0] == strings[0]:
+                        new_list.append(str(models.storage.all()[key]))
+                    else:
+                        continue
+                print(new_list)
+        else:
+            for key, value in models.storage.all().items():
+                new_list.append(str(models.storage.all()[key]))
+            print(new_list)
+
     def do_destroy(self, args):
         """ delete an instance """
         strings = args.split()
