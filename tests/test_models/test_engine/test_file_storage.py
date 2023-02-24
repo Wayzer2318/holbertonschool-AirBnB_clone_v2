@@ -1,8 +1,10 @@
 #!/usr/bin/python3
-
+""" tests for file storage """
 import unittest
 import os
 import json
+
+
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 
@@ -10,17 +12,22 @@ from models.engine.file_storage import FileStorage
 class TestFileStorage(unittest.TestCase):
     """ test for file storage """
 
-    def setUp(self):
+    def setup(self):
         """ set up """
         self.my_model = BaseModel()
         self.my_storage = FileStorage()
 
-    def tearDown(self):
+    def tear_down(self):
         """ tear down method """
         if os.path.exists("file.json"):
             os.remove("file.json")
         else:
             pass
+
+    def test_instance(self):
+        """ test for storage class instance creation """
+        storage = FileStorage()
+        self.assertIsInstance(storage, FileStorage)
 
     def test_new(self):
         """ test new """
@@ -37,6 +44,15 @@ class TestFileStorage(unittest.TestCase):
         """ test save """
         self.my_storage.save()
         self.assertTrue(os.path.exists("file.json"))
+
+    def test_reload(self):
+        """ test for file storage reloading """
+        self.my_storage.save()
+        s = FileStorage()
+        s.reload()
+        kx = s.__objects.keys()
+        ky = self.my_storage.__objects.keys()
+        self.assertTrue(kx, ky)
 
     def test_content_type(self):
         """ test content type """

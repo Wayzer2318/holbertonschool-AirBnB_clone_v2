@@ -50,6 +50,6 @@ class FileStorage():
             return
 
         FileStorage.__objects = {
-            k: BaseModel(**v)
+            k: globals()[k.split('.')[0]](**v)
             for k, v in data.items()
         }
