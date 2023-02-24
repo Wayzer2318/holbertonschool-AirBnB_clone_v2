@@ -30,7 +30,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         elif strings[0] not in HBNBCommand.class_dict.keys():
             print("** class doesn't exist **")
-        elif len(string) == 1:
+        elif len(strings) == 1:
             print("** instance id missing **")
         else:
             key_value = strings[0] + '.' + strings[1]
