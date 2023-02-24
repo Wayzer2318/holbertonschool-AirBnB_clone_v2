@@ -28,7 +28,7 @@ class FileStorage():
 
     def save(self):
         """ save all objects to fs """
-        
+
         data = {
             k: v.to_dict()
             for k, v in FileStorage.__objects.items()
