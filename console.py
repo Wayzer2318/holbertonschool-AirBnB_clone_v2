@@ -26,7 +26,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, args):
         """ print string od instance """
-        strings = self.args.split()
+        strings = args.split()
         if len(strings) == 0:
             print("** class name missing **")
         elif strings[0] not in HBNBCommand.class_dict.keys():
