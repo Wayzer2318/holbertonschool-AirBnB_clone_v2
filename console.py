@@ -4,7 +4,7 @@ import cmd
 import models
 from models.user import User
 from models.base_model import BaseModel
-
+import sys
 
 class HBNBCommand(cmd.Cmd):
     """ HBNB command class """
@@ -22,6 +22,22 @@ class HBNBCommand(cmd.Cmd):
                 print(new_instance.id)
             else:
                 print("** class doesn't exist **")
+
+    def do_show(self, args):
+        """ print string od instance """
+        strings = self.args.split()
+        if len(strings) == 0:
+            print("** class name missing **")
+        elif strings[0] not in HBNBCommand.class_dict.keys():
+            print("** class doesn't exist **")
+        elif len(string) == 1:
+            print("** instance id missing **")
+        else:
+            key_value = strings[0] + '.' + strings[1]
+            try:
+                print(models.storage.all()[key_value])
+            except KeyError:
+                print("** no instance found **")
 
     def emptyline(self):
         """ handle empty line """
