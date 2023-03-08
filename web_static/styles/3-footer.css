@@ -1,0 +1,19 @@
+.page-footer {
+    position: absolute;
+    display: block;
+    height: 60px;
+    width: 100%;
+    bottom: 0;
+    border-top: 1px #CCCCCC;
+}
+
+.page-footer > div {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.page-footer > div > h1 {
+    display: block;
+    margin: auto;
+}
