@@ -1,7 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
-		<link rel="stylesheet" href="css/1-index.css">
+		<title>Web Page</title>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			.page-header {
+				display: block;
+				height: 70px;
+				width: 100%;
+				background: #FF0000;
+			}
+
+			.page-footer {
+				position: absolute;
+				display: block;
+				height: 60px;
+				width: 100%;
+				bottom: 0;
+				background: #00FF00;
+			}
+
+			.page-footer > div {
+				display: flex;
+				height: 100%;
+				width: 100%;
+			}
+
+			.page-footer > div > h1 {
+				display: block;
+				margin: auto;
+			}
+		</style>
 	</head>
 	<body>
 		<header class="page-header">
@@ -9,7 +42,7 @@
 		<footer class="page-footer">
 			<div>
 				<h1>Holberton</h1>
-			<div>
+			</div>
 		</footer>
 	</body>
 </html>
