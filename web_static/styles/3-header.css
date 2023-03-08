@@ -3,7 +3,7 @@
     height: 70px;
     width: 100%;
     background: white;
-    border-bottom: 1px #CCCCCC;
+    border-bottom: solid 1px #CCCCCC;
 }
 
 .page-header > .page-header-icon-container {
