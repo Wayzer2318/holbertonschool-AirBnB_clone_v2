@@ -17,4 +17,6 @@
     display: block;
     margin: auto;
     height: 90%;
+    width: 142px;
+    background: url("https://s3.eu-west-3.amazonaws.com/hbtn.intranet.project.files/holbertonschool-higher-level_programming+/268/logo.png");
 }
