@@ -32,7 +32,7 @@ def ctext(text):
 
 @app.route('/python', strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
-def pytext(text='is cool'):
+def ciscool(text='is cool'):
     """
     python text
     """
