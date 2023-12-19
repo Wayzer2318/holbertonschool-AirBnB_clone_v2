@@ -53,3 +53,5 @@ class FileStorage():
             k: globals()[k.split('.')[0]](**v)
             for k, v in data.items()
         }
+    def close(self):
+        self.reload()
